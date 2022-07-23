@@ -70,8 +70,6 @@ The easiest way to get this site published is as follows:
    netlify deploy
    ```
 
-
-
 # rename this file to .env and supply the values listed below
 
 # also make sure they are available to the build tool (e.g. netlify)
