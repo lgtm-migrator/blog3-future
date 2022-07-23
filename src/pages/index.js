@@ -1,46 +1,93 @@
 import PageTitle from 'components/PageTitle'
 import Scroll from 'components/Scroll'
-import { PageBody } from 'components/styles'
-import { graphql, Link } from 'gatsby'
+import {
+    PageBody
+} from 'components/styles'
+import {
+    graphql,
+    Link
+} from 'gatsby'
 import Img from 'gatsby-image'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
+import {
+    MDXRenderer
+} from 'gatsby-plugin-mdx'
 import React from 'react'
-import styled, { css } from 'styled-components'
-import { ArrowLeft, ArrowRight } from 'styled-icons/fa-solid'
-import { mediaQueries } from 'utils/mediaQueries'
+import styled, {
+    css
+} from 'styled-components'
+import {
+    ArrowLeft,
+    ArrowRight
+} from 'styled-icons/fa-solid'
+import {
+    mediaQueries
+} from 'utils/mediaQueries'
 import PostList from 'views/PostList'
-import { ProjectList } from 'views/Web'
+import {
+    ProjectList
+} from 'views/Web'
 
-export default function IndexPage({ data }) {
-  const { mdx, janosh, posts } = data
-  return (
-    <>
-      <PageTitle {...mdx.frontmatter.cover} css="min-height: 35em">
-        <Title>
-          {mdx.frontmatter.title.split(`, `).map(str => (
-            <Link key={str} to={`/` + str.toLowerCase()}>
-              {str}
-            </Link>
-          ))}
-        </Title>
-        <Scroll direction="down" to={1} />
-      </PageTitle>
-      <PageBody>
-        <Img
-          fixed={janosh.img.fixed}
-          css="border-radius: 50%; justify-self: center;"
+export default function IndexPage({
+    data
+}) {
+    const {
+        mdx,
+        bgoonz,
+        posts
+    } = data
+    return ( <
+        >
+        <
+        PageTitle {
+            ...mdx.frontmatter.cover
+        }
+        css = "min-height: 35em" >
+        <
+        Title > {
+            mdx.frontmatter.title.split(`, `).map(str => ( <
+                Link key = {
+                    str
+                }
+                to = {
+                    `/` + str.toLowerCase()
+                } > {
+                    str
+                } <
+                /Link>
+            ))
+        } <
+        /Title> <
+        Scroll direction = "down"
+        to = {
+            1
+        }
+        /> <
+        /PageTitle> <
+        PageBody >
+        <
+        Img fixed = {
+            bgoonz.img.fixed
+        }
+        css = "border-radius: 50%; justify-self: center;" /
+        >
+        <
+        MDXRenderer > {
+            mdx.body
+        } < /MDXRenderer> <
+        H > Recent posts < /H> <
+        PostList asRow noText posts = {
+            posts.nodes
+        }
+        /> <
+        H > Recent projects < /H> <
+        ProjectList asRow / >
+        <
+        /PageBody> <
         />
-        <MDXRenderer>{mdx.body}</MDXRenderer>
-        <H>Recent posts</H>
-        <PostList asRow noText posts={posts.nodes} />
-        <H>Recent projects</H>
-        <ProjectList asRow />
-      </PageBody>
-    </>
-  )
+    )
 }
 
-const Title = styled.h1`
+const Title = styled.h1 `
   text-align: center;
   margin-top: 4em;
   padding: 0 !important;
@@ -65,21 +112,35 @@ const Title = styled.h1`
   }
 `
 
-const iconCss = css`
+const iconCss = css `
   width: 0.6em;
   vertical-align: 0;
   margin: 0 0.4em;
 `
 
-const H = ({ children, as }) => (
-  <h1 as={as} css="text-align: center;">
-    <ArrowLeft css={iconCss} />
-    {children}
-    <ArrowRight css={iconCss} />
-  </h1>
+const H = ({
+    children,
+    as
+}) => ( <
+    h1 as = {
+        as
+    }
+    css = "text-align: center;" >
+    <
+    ArrowLeft css = {
+        iconCss
+    }
+    /> {
+        children
+    } <
+    ArrowRight css = {
+        iconCss
+    }
+    /> <
+    /h1>
 )
 
-export const query = graphql`
+export const query = graphql `
   {
     mdx(fileAbsolutePath: { regex: "/landing.md/" }) {
       frontmatter {
@@ -88,7 +149,7 @@ export const query = graphql`
       }
       body
     }
-    janosh: file(name: { eq: "janosh" }) {
+    bgoonz: file(name: { eq: "bgoonz" }) {
       img: childImageSharp {
         fixed(width: 175) {
           ...GatsbyImageSharpFixed_withWebp
