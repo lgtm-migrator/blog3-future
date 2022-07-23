@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 // gatsby-plugin-feed-mdx config
 module.exports = {
     query: `{

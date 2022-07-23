@@ -70,13 +70,13 @@ The easiest way to get this site published is as follows:
    netlify deploy
    ```
 
-# rename this file to .env and supply the values listed below
+## rename this file to .env and supply the values listed below
 
-# also make sure they are available to the build tool (e.g. netlify)
+## also make sure they are available to the build tool (e.g. netlify)
 
-# warning: variables prexifed with GATSBY_ will be made available to client-side code
+## warning: variables prexifed with GATSBY_ will be made available to client-side code
 
-# be careful not to expose sensitive data
+## be careful not to expose sensitive data
 
 GATSBY_ALGOLIA_APP_ID=insertValue
 GATSBY_ALGOLIA_SEARCH_KEY=insertValue
@@ -85,6 +85,6 @@ ALGOLIA_ADMIN_KEY=insertValue
 GOOGLE_ANALYTICS_ID=insertValue
 GATSBY_GOOGLE_MAPS_API_KEY=insertValue
 
-# enables Disqus comments below blog3 posts
+## enables Disqus comments below blog3 posts
 
 GATSBY_DISQUS_NAME=insertValue

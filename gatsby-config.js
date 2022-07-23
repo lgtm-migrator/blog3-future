@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 const queries = require(`./src/utils/algolia`)
 const macros = require(`./src/utils/katex`)
 const rssOptions = require(`./src/utils/rss`)
