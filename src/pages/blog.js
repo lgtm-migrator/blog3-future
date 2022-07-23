@@ -1,7 +1,7 @@
 import PageTitle from 'components/PageTitle'
 import { PageBody } from 'components/styles'
 import TagList from 'components/TagList'
-import { graphql } from 'gatsby'
+
 import { useQueryParam } from 'hooks'
 import React from 'react'
 import PostList from 'views/PostList'
@@ -32,23 +32,3 @@ export default function BlogPage({ data }) {
     </>
   )
 }
-
-export const query = graphql`
-  {
-    allMdx(
-      filter: { fileAbsolutePath: { regex: "/posts/" } }
-      sort: { fields: frontmatter___date, order: DESC }
-    ) {
-      posts: nodes {
-        ...page
-      }
-      tags: group(field: frontmatter___tags) {
-        title: fieldValue
-        count: totalCount
-      }
-    }
-    img: file(name: { eq: "blog-banner" }) {
-      ...sharpSrc
-    }
-  }
-`

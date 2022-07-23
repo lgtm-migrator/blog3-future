@@ -1,4 +1,4 @@
-# bgoonz.dev
+# janosh.dev
 
 The code for my personal blog. I use it to write about physics, machine learning, sustainability and web development.
 
@@ -21,7 +21,7 @@ To get this site running locally, you need to have installed [`git`](https://git
 1. Clone the repo to your machine and change into its directory.
 
    ```sh
-   git clone https://github.com/bgoonz/blog3 \
+   git clone https://github.com/janosh/blog \
    && cd blog
    ```
 
@@ -69,3 +69,24 @@ The easiest way to get this site published is as follows:
    ```sh
    netlify deploy
    ```
+
+
+
+# rename this file to .env and supply the values listed below
+
+# also make sure they are available to the build tool (e.g. netlify)
+
+# warning: variables prexifed with GATSBY_ will be made available to client-side code
+
+# be careful not to expose sensitive data
+
+GATSBY_ALGOLIA_APP_ID=insertValue
+GATSBY_ALGOLIA_SEARCH_KEY=insertValue
+ALGOLIA_ADMIN_KEY=insertValue
+
+GOOGLE_ANALYTICS_ID=insertValue
+GATSBY_GOOGLE_MAPS_API_KEY=insertValue
+
+# enables Disqus comments below blog posts
+
+GATSBY_DISQUS_NAME=insertValue
