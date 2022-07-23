@@ -1,51 +1,101 @@
-import { graphql, Link } from 'gatsby'
+import {
+    graphql,
+    Link
+} from 'gatsby'
 import Img from 'gatsby-image'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
+import {
+    MDXRenderer
+} from 'gatsby-plugin-mdx'
 import React from 'react'
-import styled, { css } from 'styled-components'
-import { ArrowLeft, ArrowRight } from 'styled-icons/fa-solid'
+import styled, {
+    css
+} from 'styled-components'
+import {
+    ArrowLeft,
+    ArrowRight
+} from 'styled-icons/fa-solid'
 import Global from 'components/Global'
 import PageTitle from 'components/PageTitle'
 import Scroll from 'components/Scroll'
-import { PageBody } from 'components/styles'
+import {
+    PageBody
+} from 'components/styles'
 import mediaQuery from 'utils/mediaQuery'
 import PostList from 'views/PostList'
-import { ProjectList } from 'views/Web'
+import {
+    ProjectList
+} from 'views/Web'
 
-export default function IndexPage({ data, location }) {
-  const { mdx, janosh, posts } = data
-  const img = {
-    ...mdx.frontmatter.cover,
-    fluid: mdx.frontmatter.cover.img.sharp.fluid,
-  }
-  return (
-    <Global path={location.pathname}>
-      <PageTitle img={img} fillToBottom backdrop={false}>
-        <Title>
-          {mdx.frontmatter.title.split(`, `).map(str => (
-            <Link key={str} to={`/` + str.toLowerCase()}>
-              {str}
-            </Link>
-          ))}
-        </Title>
-        <Scroll direction="down" to={1} />
-      </PageTitle>
-      <PageBody>
-        <Img
-          fixed={janosh.img.fixed}
-          css="border-radius: 50%; justify-self: center;"
-        />
-        <MDXRenderer>{mdx.body}</MDXRenderer>
-        <H>Recent posts</H>
-        <PostList asRow noText posts={posts.edges} />
-        <H>Recent projects</H>
-        <ProjectList asRow />
-      </PageBody>
-    </Global>
-  )
+export default function IndexPage({
+    data,
+    location
+}) {
+    const {
+        mdx,
+        bgoonz,
+        posts
+    } = data
+    const img = {
+        ...mdx.frontmatter.cover,
+        fluid: mdx.frontmatter.cover.img.sharp.fluid,
+    }
+    return ( <
+        Global path = {
+            location.pathname
+        } >
+        <
+        PageTitle img = {
+            img
+        }
+        fillToBottom backdrop = {
+            false
+        } >
+        <
+        Title > {
+            mdx.frontmatter.title.split(`, `).map(str => ( <
+                Link key = {
+                    str
+                }
+                to = {
+                    `/` + str.toLowerCase()
+                } > {
+                    str
+                } <
+                /Link>
+            ))
+        } <
+        /Title> <
+        Scroll direction = "down"
+        to = {
+            1
+        }
+        /> <
+        /PageTitle> <
+        PageBody >
+        <
+        Img fixed = {
+            bgoonz.img.fixed
+        }
+        css = "border-radius: 50%; justify-self: center;" /
+        >
+        <
+        MDXRenderer > {
+            mdx.body
+        } < /MDXRenderer> <
+        H > Recent posts < /H> <
+        PostList asRow noText posts = {
+            posts.edges
+        }
+        /> <
+        H > Recent projects < /H> <
+        ProjectList asRow / >
+        <
+        /PageBody> <
+        /Global>
+    )
 }
 
-const Title = styled.h1`
+const Title = styled.h1 `
   border: 1px solid white;
   padding: 0.4em;
   background: rgba(0, 0, 0, 0.4);
@@ -70,21 +120,35 @@ const Title = styled.h1`
   }
 `
 
-const iconCss = css`
+const iconCss = css `
   width: 0.6em;
   vertical-align: 0;
   margin: 0 0.4em;
 `
 
-const H = ({ children, as }) => (
-  <h1 as={as} css="text-align: center;">
-    <ArrowLeft css={iconCss} />
-    {children}
-    <ArrowRight css={iconCss} />
-  </h1>
+const H = ({
+    children,
+    as
+}) => ( <
+    h1 as = {
+        as
+    }
+    css = "text-align: center;" >
+    <
+    ArrowLeft css = {
+        iconCss
+    }
+    /> {
+        children
+    } <
+    ArrowRight css = {
+        iconCss
+    }
+    /> <
+    /h1>
 )
 
-export const query = graphql`
+export const query = graphql `
   {
     mdx(fileAbsolutePath: { regex: "/landing.md/" }) {
       frontmatter {
@@ -93,7 +157,7 @@ export const query = graphql`
       }
       body
     }
-    janosh: file(name: { eq: "janosh" }) {
+    bgoonz: file(name: { eq: "bgoonz" }) {
       img: childImageSharp {
         fixed(width: 175) {
           ...GatsbyImageSharpFixed_withWebp

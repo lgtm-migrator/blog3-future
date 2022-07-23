@@ -1,8 +1,12 @@
-import styled, { css } from 'styled-components'
-import { Grid } from 'components/styles'
+import styled, {
+    css
+} from 'styled-components'
+import {
+    Grid
+} from 'components/styles'
 import mediaQuery from 'utils/mediaQuery'
 
-const asRow = css`
+const asRow = css `
   grid-column: 2/-2;
   grid-auto-flow: column;
   overflow: scroll;
@@ -10,7 +14,7 @@ const asRow = css`
   padding: 1em;
 `
 
-const inBlog = css`
+const inblog3 = css `
   ${mediaQuery.maxPhablet} {
     grid-column: 3;
     justify-self: center;
@@ -20,8 +24,9 @@ const inBlog = css`
   }
 `
 
-export const PostGrid = styled(Grid)`
+export const PostGrid = styled(Grid)
+`
   height: max-content;
   ${props => props.asRow && asRow};
-  ${props => props.inBlog && inBlog};
+  ${props => props.inblog3 && inblog3};
 `

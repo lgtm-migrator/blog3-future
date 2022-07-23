@@ -1,6 +1,6 @@
 // gatsby-plugin-feed-mdx config
 module.exports = {
-  query: `{
+    query: `{
     site {
       siteMetadata {
         url
@@ -8,22 +8,31 @@ module.exports = {
       }
     }
   }`,
-  feeds: [
-    {
-      serialize: ({ query }) => {
-        const { url } = query.site.siteMetadata
-        return query.posts.edges.map(({ node }) => {
-          const { slug } = node.frontmatter
-          return {
-            ...node.frontmatter,
-            description: node.excerpt,
-            url: url + slug,
-            guid: url + slug,
-            custom_elements: [{ 'content:encoded': node.html }],
-          }
-        })
-      },
-      query: `{
+    feeds: [{
+        serialize: ({
+            query
+        }) => {
+            const {
+                url
+            } = query.site.siteMetadata
+            return query.posts.edges.map(({
+                node
+            }) => {
+                const {
+                    slug
+                } = node.frontmatter
+                return {
+                    ...node.frontmatter,
+                    description: node.excerpt,
+                    url: url + slug,
+                    guid: url + slug,
+                    custom_elements: [{
+                        'content:encoded': node.html
+                    }],
+                }
+            })
+        },
+        query: `{
         posts: allMdx(
           filter: { fileAbsolutePath: { regex: "/posts/" } }
           sort: { fields: frontmatter___date, order: DESC }
@@ -42,8 +51,7 @@ module.exports = {
           }
         }
       }`,
-      title: `janosh.io`,
-      output: `/rss.xml`,
-    },
-  ],
+        title: `bgoonz.io`,
+        output: `/rss.xml`,
+    }, ],
 }

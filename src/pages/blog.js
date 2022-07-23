@@ -1,40 +1,79 @@
-import { graphql } from 'gatsby'
+import {
+    graphql
+} from 'gatsby'
 import React from 'react'
 import Global from 'components/Global'
 import PageTitle from 'components/PageTitle'
-import { PageBody } from 'components/styles'
+import {
+    PageBody
+} from 'components/styles'
 import TagList from 'components/TagList'
-import { useQueryParam } from 'hooks'
+import {
+    useQueryParam
+} from 'hooks'
 import PostList from 'views/PostList'
 
 const insertAllTag = (tags, count) =>
-  !tags.map(tag => tag.title).includes(`All`) &&
-  tags.unshift({ title: `All`, count })
+    !tags.map(tag => tag.title).includes(`All`) &&
+    tags.unshift({
+        title: `All`,
+        count
+    })
 
 const filterPostsByTag = (tag, posts) =>
-  // If !tag, tag is null which stands for all posts.
-  posts.filter(edge => !tag || edge.node.frontmatter.tags.includes(tag))
+    // If !tag, tag is null which stands for all posts.
+    posts.filter(edge => !tag || edge.node.frontmatter.tags.includes(tag))
 
-export default function BlogPage({ data, location }) {
-  const { allMdx, img } = data
-  const { posts, tags } = allMdx
-  const [activeTag, setActiveTag] = useQueryParam(`tag`)
-  insertAllTag(tags, posts.length)
-  const filteredPosts = filterPostsByTag(activeTag, posts)
-  return (
-    <Global pageTitle="Blog" path={location.pathname}>
-      <PageTitle img={{ ...img, ...img.sharp }}>
-        <h1>Blog</h1>
-      </PageTitle>
-      <PageBody>
-        <TagList {...{ tags, activeTag, setActiveTag }} />
-        <PostList inBlog posts={filteredPosts} />
-      </PageBody>
-    </Global>
-  )
+export default function blog3Page({
+    data,
+    location
+}) {
+    const {
+        allMdx,
+        img
+    } = data
+    const {
+        posts,
+        tags
+    } = allMdx
+    const [activeTag, setActiveTag] = useQueryParam(`tag`)
+    insertAllTag(tags, posts.length)
+    const filteredPosts = filterPostsByTag(activeTag, posts)
+    return ( <
+        Global pageTitle = "blog3"
+        path = {
+            location.pathname
+        } >
+        <
+        PageTitle img = {
+            {
+                ...img,
+                ...img.sharp
+            }
+        } >
+        <
+        h1 > blog3 < /h1> <
+        /PageTitle> <
+        PageBody >
+        <
+        TagList {
+            ...{
+                tags,
+                activeTag,
+                setActiveTag
+            }
+        }
+        /> <
+        PostList inblog3 posts = {
+            filteredPosts
+        }
+        /> <
+        /PageBody> <
+        /Global>
+    )
 }
 
-export const query = graphql`
+export const query = graphql `
   {
     allMdx(
       filter: { fileAbsolutePath: { regex: "/posts/" } }
@@ -50,7 +89,7 @@ export const query = graphql`
         count: totalCount
       }
     }
-    img: file(name: { eq: "blog-cover" }) {
+    img: file(name: { eq: "blog3-cover" }) {
       ...sharpSrc
     }
   }

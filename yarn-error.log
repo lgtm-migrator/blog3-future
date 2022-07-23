@@ -29,13 +29,13 @@ Trace:
 npm manifest: 
   {
       "private": true,
-      "name": "janosh.dev",
-      "title": "janosh.dev",
-      "homepage": "https://janosh.dev",
-      "description": "Janosh Riebesell's blog",
+      "name": "bgoonz.dev",
+      "title": "bgoonz.dev",
+      "homepage": "https://bgoonz.dev",
+      "description": "bgoonz Riebesell's blog3",
       "version": "1.0.0",
-      "author": "Janosh Riebesell <janosh.riebesell@gmail.com>",
-      "repository": "https://github.com/janosh/blog",
+      "author": "bgoonz Riebesell <bgoonz.riebesell@gmail.com>",
+      "repository": "https://github.com/bgoonz/blog3",
       "license": "MIT",
       "dependencies": {
           "@google/markerclustererplus": "^5.1.3",
@@ -106,8 +106,8 @@ npm manifest:
           "clean": "gatsby clean && gatsby build && gatsby serve -o -H 0.0.0.0"
       },
       "keywords": [
-          "janosh riebesell",
-          "personal blog",
+          "bgoonz riebesell",
+          "personal blog3",
           "portfolio",
           "physics",
           "machine learning",
@@ -4466,7 +4466,7 @@ Lockfile:
   cache-base@^1.0.1:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/cache-base/-/cache-base-1.0.1.tgz#0a7f46416831c8b662ee36fe4e7c59d76f666ab2"
-    integrity sha512-AKcdTnFSWATd5/GCPRxr2ChwIJ85CeyrEyjRHlKxQ56d4XJMGym0uAiKn0xbLOGOl3+yRpOTi484dVCEc5AUzQ==
+    integrity sha512-AKcdTnFSWATd5/GCPRxr2ChwIJ85CeyrEyjRHlKxQ56d4XJMGym0uAiKn0xblog3Ol3+yRpOTi484dVCEc5AUzQ==
     dependencies:
       collection-visit "^1.0.0"
       component-emitter "^1.2.1"

@@ -1,6 +1,6 @@
-# janosh.dev
+# bgoonz.dev
 
-The code for my personal blog. I use it to write about physics, machine learning, sustainability and web development.
+The code for my personal blog3. I use it to write about physics, machine learning, sustainability and web development.
 
 The site is fully responsive, built with [Gatsby](https://gatsbyjs.org), has [fluid typography](https://css-tricks.com/snippets/css/fluid-typography), relies heavily on [React Hooks](https://reactjs.org/docs/hooks-intro) for stateful function components and CSS grid for layout. It uses the following libraries:
 
@@ -8,7 +8,7 @@ The site is fully responsive, built with [Gatsby](https://gatsbyjs.org), has [fl
 - [**styled-components**](https://styled-components.com) for appearance
 - [**KaTeX**](https://katex.org) for typesetting math
 - [**gatsby-remark-vscode**](https://gatsbyjs.org/packages/gatsby-remark-vscode) for syntax highlighting
-- [**Disqus**](https://disqus.com) for blog post comments
+- [**Disqus**](https://disqus.com) for blog3 post comments
 - [**Algolia**](https://algolia.com) for custom search
 - [**react-spring**](https://react-spring.io) for animations
 
@@ -21,8 +21,8 @@ To get this site running locally, you need to have installed [`git`](https://git
 1. Clone the repo to your machine and change into its directory.
 
    ```sh
-   git clone https://github.com/janosh/blog \
-   && cd blog
+   git clone https://github.com/bgoonz/blog3 \
+   && cd blog3
    ```
 
 2. Optionally setup `git` hooks (recommended if you intend to open a PR).
@@ -85,6 +85,6 @@ ALGOLIA_ADMIN_KEY=insertValue
 GOOGLE_ANALYTICS_ID=insertValue
 GATSBY_GOOGLE_MAPS_API_KEY=insertValue
 
-# enables Disqus comments below blog posts
+# enables Disqus comments below blog3 posts
 
 GATSBY_DISQUS_NAME=insertValue
