@@ -1,16 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import domReady from '@mikaelkristiansson/domready'
-import io from 'socket.io-client'
+import React from "react"
+import ReactDOM from "react-dom"
+import domReady from "@mikaelkristiansson/domready"
+import io from "socket.io-client"
 
-import socketIo from './socketIo'
-import emitter from './emitter'
-import { apiRunner, apiRunnerAsync } from './api-runner-browser'
-import { setLoader, publicLoader } from './loader'
-import DevLoader from './dev-loader'
-import syncRequires from '$virtual/sync-requires'
+import socketIo from "./socketIo"
+import emitter from "./emitter"
+import { apiRunner, apiRunnerAsync } from "./api-runner-browser"
+import { setLoader, publicLoader } from "./loader"
+import DevLoader from "./dev-loader"
+import syncRequires from "$virtual/sync-requires"
 // Generated during bootstrap
-import matchPaths from '$virtual/match-paths.json'
+import matchPaths from "$virtual/match-paths.json"
 
 window.___emitter = emitter
 
@@ -69,7 +69,9 @@ apiRunnerAsync(`onClientEntry`).then(() => {
         // Prevents certain browsers spamming XHR 'ERR_CONNECTION_REFUSED'
         // errors within the console, such as when exiting the develop process.
         parentSocket.on(`disconnect`, () => {
-          console.warn(`[socket.io] Disconnected. Unable to perform health-check.`)
+          console.warn(
+            `[socket.io] Disconnected. Unable to perform health-check.`
+          )
           parentSocket.close()
         })
       }
@@ -96,7 +98,11 @@ apiRunnerAsync(`onClientEntry`).then(() => {
 
   const rootElement = document.getElementById(`___gatsby`)
 
-  const renderer = apiRunner(`replaceHydrateFunction`, undefined, ReactDOM.render)[0]
+  const renderer = apiRunner(
+    `replaceHydrateFunction`,
+    undefined,
+    ReactDOM.render
+  )[0]
 
   Promise.all([
     loader.loadPage(`/dev-404-page/`),

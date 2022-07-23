@@ -1,4 +1,15 @@
-# Local Netlify folder
+# dependencies
+node_modules
+
+# builds
+.cache
+public
+
+# deploy config
 .netlify
-node_modules/
-cache
+
+# environment variables
+.env*
+
+# draft posts
+content/posts/drafts

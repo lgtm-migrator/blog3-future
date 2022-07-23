@@ -1,18 +1,18 @@
-import React from 'react'
-import { Router, Location, BaseContext } from '@reach/router'
-import { ScrollContext } from 'gatsby-react-router-scroll'
+import React from "react"
+import { Router, Location, BaseContext } from "@reach/router"
+import { ScrollContext } from "gatsby-react-router-scroll"
 
 import {
   shouldUpdateScroll,
   init as navigationInit,
   RouteUpdates,
-} from './navigation'
-import { apiRunner } from './api-runner-browser'
-import loader from './loader'
-import { PageQueryStore, StaticQueryStore } from './query-result-store'
-import EnsureResources from './ensure-resources'
+} from "./navigation"
+import { apiRunner } from "./api-runner-browser"
+import loader from "./loader"
+import { PageQueryStore, StaticQueryStore } from "./query-result-store"
+import EnsureResources from "./ensure-resources"
 
-import { reportError, clearError } from './error-overlay-handler'
+import { reportError, clearError } from "./error-overlay-handler"
 
 // TODO: Remove entire block when we make fast-refresh the default
 // In fast-refresh, this logic is all moved into the `error-overlay-handler`
@@ -120,7 +120,9 @@ class LocationHandler extends React.Component {
 }
 
 const Root = () => (
-  <Location>{locationContext => <LocationHandler {...locationContext} />}</Location>
+  <Location>
+    {locationContext => <LocationHandler {...locationContext} />}
+  </Location>
 )
 
 // Let site, plugins wrap the site e.g. for Redux.

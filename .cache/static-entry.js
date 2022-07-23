@@ -62,7 +62,8 @@ const getPageDataUrl = pagePath => {
   return `${__PATH_PREFIX__}/${pageDataPath}`
 }
 
-const getStaticQueryUrl = hash => `${__PATH_PREFIX__}/page-data/sq/d/${hash}.json`
+const getStaticQueryUrl = hash =>
+  `${__PATH_PREFIX__}/page-data/sq/d/${hash}.json`
 
 const getPageData = pagePath => {
   const pageDataPath = getPageDataPath(pagePath)
@@ -172,7 +173,9 @@ export default (pagePath, callback) => {
   }
 
   const setPostBodyComponents = components => {
-    postBodyComponents = postBodyComponents.concat(sanitizeComponents(components))
+    postBodyComponents = postBodyComponents.concat(
+      sanitizeComponents(components)
+    )
   }
 
   const setBodyProps = props => {
@@ -455,7 +458,9 @@ export default (pagePath, callback) => {
   if (chunkMapping[`polyfill`]) {
     chunkMapping[`polyfill`].forEach(script => {
       const scriptPath = `${__PATH_PREFIX__}${script}`
-      bodyScripts.push(<script key={scriptPath} src={scriptPath} noModule={true} />)
+      bodyScripts.push(
+        <script key={scriptPath} src={scriptPath} noModule={true} />
+      )
     })
   }
 

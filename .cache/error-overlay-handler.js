@@ -1,5 +1,5 @@
-import * as ReactRefreshErrorOverlay from '@pmmmwh/react-refresh-webpack-plugin/overlay'
-import * as ReactErrorOverlay from 'react-error-overlay'
+import * as ReactRefreshErrorOverlay from "@pmmmwh/react-refresh-webpack-plugin/overlay"
+import * as ReactErrorOverlay from "react-error-overlay"
 
 const ErrorOverlay = {
   showCompileError:

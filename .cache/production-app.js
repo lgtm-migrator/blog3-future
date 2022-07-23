@@ -1,30 +1,30 @@
-import { apiRunner, apiRunnerAsync } from './api-runner-browser'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Router, navigate, Location, BaseContext } from '@reach/router'
-import { ScrollContext } from 'gatsby-react-router-scroll'
-import domReady from '@mikaelkristiansson/domready'
-import { StaticQueryContext } from 'gatsby'
+import { apiRunner, apiRunnerAsync } from "./api-runner-browser"
+import React from "react"
+import ReactDOM from "react-dom"
+import { Router, navigate, Location, BaseContext } from "@reach/router"
+import { ScrollContext } from "gatsby-react-router-scroll"
+import domReady from "@mikaelkristiansson/domready"
+import { StaticQueryContext } from "gatsby"
 import {
   shouldUpdateScroll,
   init as navigationInit,
   RouteUpdates,
-} from './navigation'
-import emitter from './emitter'
-import PageRenderer from './page-renderer'
-import asyncRequires from '$virtual/async-requires'
+} from "./navigation"
+import emitter from "./emitter"
+import PageRenderer from "./page-renderer"
+import asyncRequires from "$virtual/async-requires"
 import {
   setLoader,
   ProdLoader,
   publicLoader,
   PageResourceStatus,
   getStaticQueryResults,
-} from './loader'
-import EnsureResources from './ensure-resources'
-import stripPrefix from './strip-prefix'
+} from "./loader"
+import EnsureResources from "./ensure-resources"
+import stripPrefix from "./strip-prefix"
 
 // Generated during bootstrap
-import matchPaths from '$virtual/match-paths.json'
+import matchPaths from "$virtual/match-paths.json"
 
 const loader = new ProdLoader(asyncRequires, matchPaths)
 setLoader(loader)
@@ -108,7 +108,8 @@ apiRunnerAsync(`onClientEntry`).then(() => {
                       pageResources.page.path === `/404.html`
                         ? stripPrefix(location.pathname, __BASE_PATH__)
                         : encodeURI(
-                            pageResources.page.matchPath || pageResources.page.path
+                            pageResources.page.matchPath ||
+                              pageResources.page.path
                           )
                     }
                     {...this.props}

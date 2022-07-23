@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import loader, { PageResourceStatus } from './loader'
-import redirects from './redirects.json'
-import { apiRunner } from './api-runner-browser'
-import emitter from './emitter'
-import { RouteAnnouncerProps } from './route-announcer-props'
-import { navigate as reachNavigate } from '@reach/router'
-import { globalHistory } from '@reach/router/lib/history'
-import { parsePath } from 'gatsby-link'
+import React from "react"
+import PropTypes from "prop-types"
+import loader, { PageResourceStatus } from "./loader"
+import redirects from "./redirects.json"
+import { apiRunner } from "./api-runner-browser"
+import emitter from "./emitter"
+import { RouteAnnouncerProps } from "./route-announcer-props"
+import { navigate as reachNavigate } from "@reach/router"
+import { globalHistory } from "@reach/router/lib/history"
+import { parsePath } from "gatsby-link"
 
 // Convert to a map for faster lookup in maybeRedirect()
 const redirectMap = redirects.reduce((map, redirect) => {

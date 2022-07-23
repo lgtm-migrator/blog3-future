@@ -1,6 +1,6 @@
-import prefetchHelper from './prefetch'
-import emitter from './emitter'
-import { setMatchPaths, findPath, findMatchPath } from './find-path'
+import prefetchHelper from "./prefetch"
+import emitter from "./emitter"
+import { setMatchPaths, findPath, findMatchPath } from "./find-path"
 
 /**
  * Available resource loading statuses
@@ -43,7 +43,10 @@ function doFetch(url, method = `GET`) {
 }
 
 const doesConnectionSupportPrefetch = () => {
-  if (`connection` in navigator && typeof navigator.connection !== `undefined`) {
+  if (
+    `connection` in navigator &&
+    typeof navigator.connection !== `undefined`
+  ) {
     if ((navigator.connection.effectiveType || ``).includes(`2g`)) {
       return false
     }
@@ -462,7 +465,9 @@ export class ProdLoader extends BaseLoader {
         const pageData = result.payload
         const chunkName = pageData.componentChunkName
         const componentUrls = createComponentUrls(chunkName)
-        return Promise.all(componentUrls.map(prefetchHelper)).then(() => pageData)
+        return Promise.all(componentUrls.map(prefetchHelper)).then(
+          () => pageData
+        )
       })
   }
 

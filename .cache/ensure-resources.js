@@ -1,6 +1,6 @@
-import React from 'react'
-import loader, { PageResourceStatus } from './loader'
-import shallowCompare from 'shallow-compare'
+import React from "react"
+import loader, { PageResourceStatus } from "./loader"
+import shallowCompare from "shallow-compare"
 
 class EnsureResources extends React.Component {
   constructor(props) {
@@ -51,7 +51,9 @@ class EnsureResources extends React.Component {
     if (this.state.pageResources !== nextState.pageResources) {
       return true
     }
-    if (this.state.pageResources.component !== nextState.pageResources.component) {
+    if (
+      this.state.pageResources.component !== nextState.pageResources.component
+    ) {
       return true
     }
 
@@ -63,7 +65,8 @@ class EnsureResources extends React.Component {
     if (
       this.state.location.key !== nextState.location.key &&
       nextState.pageResources.page &&
-      (nextState.pageResources.page.matchPath || nextState.pageResources.page.path)
+      (nextState.pageResources.page.matchPath ||
+        nextState.pageResources.page.path)
     ) {
       return true
     }

@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 import Link, {
   withPrefix,
   withAssetPrefix,
@@ -8,10 +8,10 @@ import Link, {
   replace,
   navigateTo,
   parsePath,
-} from 'gatsby-link'
-import { useScrollRestoration } from 'gatsby-react-router-scroll'
-import PageRenderer from './public-page-renderer'
-import loader from './loader'
+} from "gatsby-link"
+import { useScrollRestoration } from "gatsby-react-router-scroll"
+import PageRenderer from "./public-page-renderer"
+import loader from "./loader"
 
 const prefetchPathname = loader.enqueue
 

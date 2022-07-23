@@ -1,13 +1,13 @@
-import React from 'react'
-import { StaticQueryContext } from 'gatsby'
+import React from "react"
+import { StaticQueryContext } from "gatsby"
 import {
   getPageQueryData,
   registerPath as socketRegisterPath,
   unregisterPath as socketUnregisterPath,
   getStaticQueryData,
-} from './socketIo'
-import PageRenderer from './page-renderer'
-import normalizePagePath from './normalize-page-path'
+} from "./socketIo"
+import PageRenderer from "./page-renderer"
+import normalizePagePath from "./normalize-page-path"
 
 if (process.env.NODE_ENV === `production`) {
   throw new Error(

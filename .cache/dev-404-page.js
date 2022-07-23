@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql, Link, navigate } from 'gatsby'
-import queryString from 'query-string'
+import React from "react"
+import PropTypes from "prop-types"
+import { graphql, Link, navigate } from "gatsby"
+import queryString from "query-string"
 
 class Dev404Page extends React.Component {
   static propTypes = {
@@ -22,7 +22,10 @@ class Dev404Page extends React.Component {
       showCustom404: false,
       initPagePaths: pagePaths,
       pagePathSearchTerms: initialPagePathSearchTerms,
-      pagePaths: this.getFilteredPagePaths(pagePaths, initialPagePathSearchTerms),
+      pagePaths: this.getFilteredPagePaths(
+        pagePaths,
+        initialPagePathSearchTerms
+      ),
     }
     this.showCustom404 = this.showCustom404.bind(this)
     this.handlePagePathSearch = this.handlePagePathSearch.bind(this)
@@ -96,7 +99,9 @@ class Dev404Page extends React.Component {
         </p>
         {this.props.custom404 ? (
           <p>
-            <button onClick={this.showCustom404}>Preview custom 404 page</button>
+            <button onClick={this.showCustom404}>
+              Preview custom 404 page
+            </button>
           </p>
         ) : (
           <p>
@@ -109,8 +114,8 @@ class Dev404Page extends React.Component {
           {` `}
           <code>{newFilePath}</code>
           {` `}
-          and this page will automatically refresh to show the new page component you
-          created.
+          and this page will automatically refresh to show the new page
+          component you created.
         </p>
         {this.state.initPagePaths.length > 0 && (
           <div>
