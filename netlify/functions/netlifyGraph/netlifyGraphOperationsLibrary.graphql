@@ -1,0 +1,8 @@
+fragment ExampleFragment on Query @netlify(id: """cfef45d7-8693-40b4-bf42-6b96c0e46026""", doc: null) {
+  __typename
+  gitHub {
+    resource(url: "") {
+      url
+    }
+  }
+}
