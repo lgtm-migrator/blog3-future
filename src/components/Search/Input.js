@@ -2,7 +2,7 @@ import React from 'react'
 import { connectSearchBox } from 'react-instantsearch-dom'
 import { Form, Input, SearchIcon } from './styles'
 
-export default connectSearchBox(({ refine, size = `1em`, ...rest }) => (
+export default connectSearchBox(({ refine, ...rest }) => (
   <Form>
     <Input
       type="text"
@@ -11,9 +11,8 @@ export default connectSearchBox(({ refine, size = `1em`, ...rest }) => (
       onChange={e => refine(e.target.value)}
       // iOS Safari doesn't blur input automatically on tap outside.
       onMouseLeave={e => e.target.blur()}
-      size={size}
       {...rest}
     />
-    <SearchIcon size={size} />
+    <SearchIcon />
   </Form>
 ))

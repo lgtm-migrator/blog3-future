@@ -58,6 +58,7 @@ export default function Photos({ tab, photos, modal, setModal }) {
       <Modal
         open={currentPhoto}
         {...{ modal, setModal }}
+        whiteControls
         fullScreenDefault
         showArrows
         css="background: black; overflow: hidden;"

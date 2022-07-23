@@ -5,9 +5,9 @@ export const Post = styled.article`
   height: 100%;
   width: 100%;
   display: grid;
-  border-radius: 0.5em;
-  border: 1px solid var(--color-shadow);
-  box-shadow: 0 0 1em var(--color-shadow);
+  border-radius: ${props => props.theme.mediumBorderRadius};
+  border: 1px solid ${props => props.theme.borderColor};
+  box-shadow: 0 0 1em ${props => props.theme.shadowColor};
   overflow: hidden;
   > :not(:first-child) {
     margin-left: 20px;
@@ -19,7 +19,7 @@ export const Post = styled.article`
 `
 
 export const Cover = styled(Img).attrs(
-  ({ fluid, src }) => !fluid && src && { as: `img` }
+  ({ fluid, src }) => !fluid && { as: src ? `img` : `div` }
 )`
   height: calc(10em + 4vh);
   width: 100%;

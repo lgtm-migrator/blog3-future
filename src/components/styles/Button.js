@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ButtonLink = styled.a`
-  background: var(--color-a);
+  background: ${props => props.theme.buttonBg};
   color: white;
   border-radius: 0.4em;
   padding: 0.3em 0.6em;
@@ -11,29 +11,29 @@ export const ButtonLink = styled.a`
   margin: 0 auto;
   :hover {
     color: white;
-    background: var(--color-d);
+    background: ${props => props.theme.hoveredButtonBg};
   }
 `
 
 export const ButtonGroup = styled.div`
   margin: 2em auto;
-  border-radius: 0.5em;
+  border-radius: ${props => props.theme.mediumBorderRadius};
   overflow: hidden;
   button {
     font-size: 1.3em;
     border: none;
     outline: none;
-    background: var(--color-blue-default);
+    background: ${props => props.theme.blue};
     color: white;
     padding: 0.2em 0.6em;
     width: max-content;
     font-size: ${props => props.size};
     transition: 0.3s;
     :hover {
-      background: var(--color-blue-lighter);
+      background: ${props => props.theme.lighterBlue};
     }
     &.active {
-      background: var(--color-blue-dark);
+      background: ${props => props.theme.darkerBlue};
       box-shadow: inset 0 0 0.3em black;
     }
   }

@@ -7,6 +7,9 @@ const inTitle = css`
   width: max-content;
   justify-content: center;
   max-width: 80vw;
+  a {
+    color: ${props => props.theme.lightGreen};
+  }
 `
 
 export const Meta = styled.div`

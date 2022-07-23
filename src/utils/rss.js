@@ -1,30 +1,25 @@
-// gatsby-plugin-feed config
-// Adapted from https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-plugin-mdx/feed.js
-
+// gatsby-plugin-feed-mdx config
 module.exports = {
   query: `{
     site {
-      meta: siteMetadata {
-        title
+      siteMetadata {
         url
         site_url: url
-        description
       }
     }
   }`,
-  setup: ({ query }) => query.site.meta,
   feeds: [
     {
       serialize: ({ query }) => {
-        const { url } = query.site.meta
-        return query.posts.nodes.map(post => {
-          const { slug } = post.frontmatter
+        const { url } = query.site.siteMetadata
+        return query.posts.edges.map(({ node }) => {
+          const { slug } = node.frontmatter
           return {
-            ...post.frontmatter,
-            description: post.excerpt,
+            ...node.frontmatter,
+            description: node.excerpt,
             url: url + slug,
             guid: url + slug,
-            custom_elements: [{ 'content:encoded': post.html }],
+            custom_elements: [{ 'content:encoded': node.html }],
           }
         })
       },
@@ -33,18 +28,21 @@ module.exports = {
           filter: { fileAbsolutePath: { regex: "/posts/" } }
           sort: { fields: frontmatter___date, order: DESC }
         ) {
-          nodes {
-            frontmatter {
-              title
-              slug
-              date(formatString: "MMM D, YYYY")
+          edges {
+            node {
+              frontmatter {
+                title
+                slug
+                date(formatString: "MMM D, YYYY")
+              }
+              timeToRead
+              excerpt(pruneLength: 300)
+              html
             }
-            timeToRead
-            excerpt(pruneLength: 300)
-            html
           }
         }
       }`,
+      title: `janosh.io`,
       output: `/rss.xml`,
     },
   ],

@@ -1,31 +1,28 @@
 import { useEffect, useState } from 'react'
-import { mediaQueries } from 'utils/mediaQueries'
+import mediaQuery from 'utils/mediaQuery'
 
-export const useMediaQuery = (query, cb) => {
-  const [matches, setMatches] = useState(false)
+const noop = () => {}
 
+// React hook for JS media queries
+export const useMediaQuery = query => {
+  // Fall back on dummy matchMedia during SSR.
+  const matchMedia =
+    globalThis.matchMedia || (() => ({ addListener: noop, removeListener: noop }))
+  query = matchMedia(query)
+  const [matches, setMatches] = useState(query.matches)
   useEffect(() => {
-    const qry = window.matchMedia(query)
-    setMatches(qry.matches)
-
-    const handleMatch = q => {
-      setMatches(q.matches)
-      if (cb instanceof Function) cb(q.matches)
-    }
-
-    qry.addListener(handleMatch)
-    return () => qry.removeListener(handleMatch)
-  }, [query, cb])
-
+    const handleMatch = q => setMatches(q.matches)
+    query.addListener(handleMatch)
+    return () => query.removeListener(handleMatch)
+  }, [query])
   return matches
 }
 
-const validKeys = Object.keys(mediaQueries).filter(key => !key.includes(`Js`))
-
-export const useScreenQuery = (key, cb) => {
-  if (!mediaQueries[key + `Js`])
+// React hook for JS screen queries
+export const useScreenQuery = cond => {
+  if (!mediaQuery[cond + `Js`])
     throw new TypeError(
-      `useScreenQuery received invalid key: ${key}. Should be one of ${validKeys}`
+      `useMediaQuery's condition should be one of (min|max)(Phone|Phablet|Tablet|etc.)`
     )
-  return useMediaQuery(mediaQueries[key + `Js`], cb)
+  return useMediaQuery(mediaQuery[cond + `Js`])
 }

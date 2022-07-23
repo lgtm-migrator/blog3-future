@@ -38,7 +38,8 @@ export default createGlobalStyle`
   pre.grvsc-container {
     position: relative;
     background: #050431;
-    border-radius: 0.5em;
+    font-size: 0.92em;
+    border-radius: ${props => props.theme.mediumBorderRadius};
     line-height: 1.5em
   }
 
@@ -56,9 +57,9 @@ export default createGlobalStyle`
   }
 
   .gatsby-code-title {
-    background: var(--color-orange-default);
+    background: ${props => props.theme.orange};
     color: black;
-    padding: 0.3em 0.5em;
+    padding: 0.2em 0.4em;
     width: max-content;
     margin: 1em 0 -1.6em 1em;
     border-radius: 0.3em;
@@ -69,17 +70,15 @@ export default createGlobalStyle`
   }
 
   /* highlighted lines */
-  :root {
-    --grvsc-line-highlighted-background-color: rgba(255, 255, 255, 0.2); /* default unchanged */
-    --grvsc-line-highlighted-border-color: var(--color-blue-lighter); /* default: rgba(255, 255, 255, 0.5) */
-    --grvsc-line-highlighted-border-width: 0.3em; /* default: 2px */
+  .grvsc-container .grvsc-line-highlighted {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0.3em 0 0 0 ${props => props.theme.lighterBlue};
   }
 
   /* inline code */
   :not(pre) > code {
     border-radius: 0.2em;
-    background: var(--color-accentBackground);
+    background: ${props => props.theme.inlineCodeColor};
     padding: 0.15em 0.2em;
-    font-size: 1.1em;
   }
 `

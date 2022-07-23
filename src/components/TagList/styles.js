@@ -1,23 +1,16 @@
 import styled from 'styled-components'
 import { Grid } from 'styled-icons/boxicons-regular'
 import { JsSquare, Python } from 'styled-icons/fa-brands'
-import {
-  Atom,
-  Brain,
-  ChalkboardTeacher,
-  Database,
-  Robot,
-  ToggleOff,
-  ToggleOn,
-} from 'styled-icons/fa-solid'
+import { ToggleOff, ToggleOn, Atom, Brain } from 'styled-icons/fa-solid'
+import { ChalkboardTeacher, Database, Robot } from 'styled-icons/fa-solid'
 import { Cpu } from 'styled-icons/feather'
 import { Lab, Sigma } from 'styled-icons/icomoon'
 import { ColorLens, Web } from 'styled-icons/material'
 import { WeatherSunny } from 'styled-icons/typicons'
-import { mediaQueries } from 'utils/mediaQueries'
+import mediaQuery from 'utils/mediaQuery'
 export { Tags as TagsIcon } from 'styled-icons/fa-solid'
 
-export const TagGrid = styled.aside`
+export const TagGrid = styled.div`
   display: grid;
   grid-gap: 1em;
   grid-column: -3;
@@ -25,11 +18,11 @@ export const TagGrid = styled.aside`
   h2 {
     margin: 0;
   }
-  ${mediaQueries.minPhablet} {
+  ${mediaQuery.minPhablet} {
     position: sticky;
-    top: 6em;
+    top: 2em;
   }
-  ${mediaQueries.maxPhablet} {
+  ${mediaQuery.maxPhablet} {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -46,16 +39,16 @@ export const TagGrid = styled.aside`
 export const Tag = styled.button`
   font-size: 1em;
   outline: none;
-  border: 1px solid var(--color-shadow);
+  border: 1px solid ${props => props.theme.shadowColor};
   cursor: pointer;
   width: max-content;
   white-space: nowrap;
-  color: ${p => (p.active ? `black` : `var(--color-text)`)};
+  color: ${({ active, theme }) => (active ? `black` : theme.textColor)};
   font-weight: 300;
-  border-radius: 0.2em;
-  background: ${p =>
-    p.active ? `var(--color-a)` : `var(--color-accentBackground)`};
-  ${mediaQueries.maxPhablet} {
+  border-radius: ${props => props.theme.smallBorderRadius};
+  background: ${({ active, theme }) =>
+    active ? theme.grayHoveredButtonBg : theme.grayButtonBg};
+  ${mediaQuery.maxPhablet} {
     padding: 0.1em 0.5em 0.2em;
     margin: 0 1em 1em 0;
     transition: 0.6s;
@@ -71,7 +64,7 @@ export const Toggle = styled(ToggleOff).attrs(props => ({
 }))`
   margin-left: 0.5em;
   cursor: pointer;
-  ${mediaQueries.minPhablet} {
+  ${mediaQuery.minPhablet} {
     display: none;
   }
 `

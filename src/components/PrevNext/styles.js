@@ -10,7 +10,7 @@ export const PreviousNext = styled.div`
 `
 
 export const Thumbnail = styled.div`
-  border-radius: 0.5em;
+  border-radius: ${props => props.theme.mediumBorderRadius};
   overflow: hidden;
   position: relative;
   text-align: center;
@@ -18,7 +18,6 @@ export const Thumbnail = styled.div`
   img {
     width: 12em;
     height: 7em;
-    display: block;
   }
   h4 {
     width: 100%;

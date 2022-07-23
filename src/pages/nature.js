@@ -1,24 +1,25 @@
-import PageTitle from 'components/PageTitle'
-import { ButtonGroup, PageBody } from 'components/styles'
-import { graphql } from 'gatsby'
 import React, { useState } from 'react'
+import { graphql } from 'gatsby'
+
+import Global from 'components/Global'
+import PageTitle from 'components/PageTitle'
+import { PageBody, ButtonGroup } from 'components/styles'
 import Photos from 'views/Photos'
 
-export default function NaturePage({ data }) {
+export default function NaturePage({ data, location }) {
   const [modal, setModal] = useState()
   const [tab, setTab] = useState(`list`)
-  const photos = data.photos.nodes.map(photo => ({
-    ...photo?.fields.meta,
-    ...photo.sharp,
+  const photos = data.photos.edges.map(({ node }) => ({
+    ...node?.fields.meta,
+    ...node.sharp,
   }))
   const buttonProps = tabName => ({
     className: tab === tabName ? `active` : null,
     onClick: () => setTab(tabName),
   })
-  const { cover } = data.mdx.frontmatter
   return (
-    <>
-      <PageTitle img={{ ...cover, ...cover.img }}>
+    <Global path={location.pathname}>
+      <PageTitle img={photos[13].fluid}>
         <h1>Nature</h1>
       </PageTitle>
       <PageBody cols="2/-2">
@@ -28,7 +29,7 @@ export default function NaturePage({ data }) {
         </ButtonGroup>
         <Photos {...{ tab, modal, setModal, photos }} />
       </PageBody>
-    </>
+    </Global>
   )
 }
 
@@ -37,20 +38,17 @@ export const query = graphql`
     photos: allFile(
       filter: { dir: { regex: "/content/photos/" }, ext: { eq: ".jpg" } }
     ) {
-      nodes {
-        ...sharpSrc
-        fields {
-          meta {
-            caption
-            lat
-            lng
+      edges {
+        node {
+          ...sharpSrc
+          fields {
+            meta {
+              caption
+              lat
+              lng
+            }
           }
         }
-      }
-    }
-    mdx(fileAbsolutePath: { regex: "/nature.md/" }) {
-      frontmatter {
-        ...cover
       }
     }
   }

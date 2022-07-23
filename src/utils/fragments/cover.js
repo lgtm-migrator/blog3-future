@@ -5,11 +5,10 @@ export const query = graphql`
     alt: name
     sharp: childImageSharp {
       fluid(maxWidth: 1500) {
-        ...GatsbyImageSharpFluid_withWebp_tracedSVG
+        ...GatsbyImageSharpFluid_withWebp
       }
     }
     src: publicURL
-    dataURI
   }
   fragment cover on MdxFrontmatter {
     cover {
@@ -17,6 +16,9 @@ export const query = graphql`
       url
       caption
       img {
+        ...sharpSrc
+      }
+      thumbnail {
         ...sharpSrc
       }
     }

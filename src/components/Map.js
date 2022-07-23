@@ -1,5 +1,5 @@
 import { functions, isEqual, omit } from 'lodash'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 const apiKey = process.env.GATSBY_GOOGLE_MAPS_API_KEY
 
@@ -26,7 +26,7 @@ function Map({ options, onMount, className, onMountProps }) {
 
   return (
     <div
-      css="height: 35em; max-height: 70vh; margin: 1em 0; border-radius: 0.5em;"
+      css="height: 60vh; margin: 1em 0; border-radius: 0.5em;"
       {...{ ref, className }}
     />
   )
@@ -54,7 +54,7 @@ Map.defaultProps = {
 export const MapEmbed = ({ place, ...rest }) => (
   <iframe
     src={`https://google.com/maps/embed/v1/place?q=${place}&key=${apiKey}`}
-    css="height: 35em; max-height: 70vh; width: 100%; border: 0; border-radius: 0.3em;"
+    css="height: 60vh; width: 100%; border: 0; border-radius: 0.5em;"
     {...rest}
   />
 )

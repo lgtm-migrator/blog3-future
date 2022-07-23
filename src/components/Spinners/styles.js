@@ -13,14 +13,14 @@ export const FoldingDiv = styled.div`
     position: relative;
     transform: scale(1.1);
   }
-  div::before {
+  div:before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--color-text);
+    background: ${({ color, theme }) => theme[color] || theme.textColor};
     ${props => props.active && `animation: foldCube 2.4s infinite linear both`};
     transform-origin: 100% 100%;
   }
@@ -29,7 +29,7 @@ export const FoldingDiv = styled.div`
       (el, idx) => `div:nth-child(${el}) {
         transform: scale(1.1) rotateZ(${90 * (idx + 1)}deg);
       }
-      div:nth-child(${el})::before {
+      div:nth-child(${el}):before {
         animation-delay: ${0.3 * (idx + 1)}s;
       }`
     )

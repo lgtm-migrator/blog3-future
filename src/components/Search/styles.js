@@ -7,21 +7,22 @@ export const Root = styled.div`
   position: relative;
   display: grid;
   grid-gap: 1em;
-  color: var(--color-text);
+  color: ${props => props.theme.textColor};
 `
 
 export const SearchIcon = styled(Search)`
+  width: 1em;
   pointer-events: none;
   color: white;
 `
 
 const focus = css`
   background: white;
-  color: var(--color-blue-dark);
+  color: ${props => props.theme.darkerBlue};
   cursor: text;
   width: 5em;
   + ${SearchIcon} {
-    color: var(--color-blue-dark);
+    color: ${props => props.theme.darkerBlue};
     margin: 0 0.3em;
   }
 `
@@ -29,17 +30,17 @@ const focus = css`
 const collapsed = css`
   width: 0;
   cursor: pointer;
-  color: var(--color-blue-lighter);
+  color: ${props => props.theme.lighterBlue};
   ${props => props.focus && focus}
   margin-left: ${props => (props.focus ? `-1.6em` : `-1em`)};
   padding-left: ${props => (props.focus ? `1.6em` : `1em`)};
   ::placeholder {
-    color: var(--color-gray-default);
+    color: ${props => props.theme.gray};
   }
 `
 
 const expanded = css`
-  background: white;
+  background: ${props => props.theme.lighterGray};
   width: 6em;
   margin-left: -1.6em;
   padding-left: 1.6em;
@@ -51,10 +52,10 @@ const expanded = css`
 export const Input = styled.input`
   outline: none;
   border: none;
-  font-size: ${p => p.size};
+  font-size: 1em;
   background: transparent;
   transition: 0.3s;
-  border-radius: 0.2em;
+  border-radius: ${props => props.theme.smallBorderRadius};
   ${props => (props.collapse ? collapsed : expanded)};
 `
 
@@ -66,7 +67,7 @@ export const Form = styled.form`
 
 export const HitsWrapper = styled.div`
   display: ${props => (props.show ? `grid` : `none`)};
-  background: var(--color-background);
+  background: ${props => props.theme.background};
   max-height: 80vh;
   overflow: scroll;
   z-index: 2;
@@ -77,7 +78,7 @@ export const HitsWrapper = styled.div`
   max-width: 30em;
   box-shadow: 0 0 5px 0 black;
   padding: 0.7em 1em 0.4em;
-  border-radius: 0.2em;
+  border-radius: ${props => props.theme.smallBorderRadius};
   * {
     margin-top: 0;
   }
@@ -86,21 +87,21 @@ export const HitsWrapper = styled.div`
   }
   div + div {
     margin-top: 0.6em;
-    border-top: 1px solid var(--color-gray-lighter);
+    border-top: 1px solid ${props => props.theme.lighterGray};
   }
   mark {
-    color: var(--color-blue-lighter);
-    background: var(--color-blue-dark);
+    color: ${props => props.theme.lighterBlue};
+    background: ${props => props.theme.darkerBlue};
   }
   header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid var(--color-gray-dark);
+    border-bottom: 2px solid ${props => props.theme.darkGray};
     h3 {
       color: white;
-      background: var(--color-gray-default);
+      background: ${props => props.theme.gray};
       padding: 0.1em 0.4em;
-      border-radius: 0.2em;
+      border-radius: ${props => props.theme.smallBorderRadius};
       margin-bottom: 0.3em;
     }
   }

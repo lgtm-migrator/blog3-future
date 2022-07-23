@@ -1,29 +1,27 @@
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import { mediaQueries } from 'utils/mediaQueries'
+import mediaQuery from 'utils/mediaQuery'
 
-export const HeaderDiv = styled.header`
-  background: var(--color-b);
-  position: sticky;
-  top: 0;
+export const HeaderContainer = styled.header`
+  background: ${props => props.theme.headerBg};
   display: grid;
   grid-gap: calc(1em + 1vw);
   z-index: 3;
+  align-items: center;
+  justify-content: space-between;
   padding: 1em;
   color: white;
   font-size: 1.2em;
-  grid-template-areas: 'nav title darkmode search';
-  grid-template-columns: auto 1fr auto auto;
-  border-bottom: 1px solid var(--color-a);
-  ${mediaQueries.minTablet} {
-    grid-template-areas: 'title nav darkmode search';
+  grid-template-columns: 1fr auto auto;
+  grid-template-areas: 'title darkmode search';
+  justify-items: start;
+  ${mediaQuery.minPhablet} {
+    grid-template-columns: auto 1fr auto auto;
   }
 `
 
 export const Logo = styled(Link)`
-  grid-area: title;
   font-size: 2.4em;
   transform: scale(1, 0.85);
   color: inherit;
-  place-self: center;
 `

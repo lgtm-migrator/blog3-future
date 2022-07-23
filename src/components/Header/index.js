@@ -1,8 +1,8 @@
 import React from 'react'
-import DarkToggle from '../DarkToggle'
+import DarkMode from '../DarkMode'
 import Nav from '../Nav'
 import Search from '../Search'
-import { HeaderDiv, Logo } from './styles'
+import { HeaderContainer, Logo } from './styles'
 
 const searchIndices = [
   { name: `Pages`, title: `Pages` },
@@ -11,13 +11,13 @@ const searchIndices = [
 
 export default function Header({ site }) {
   return (
-    <HeaderDiv>
+    <HeaderContainer>
       <Logo to="/" title={site.title} rel="home">
         JR
       </Logo>
       <Nav />
-      <DarkToggle />
+      <DarkMode />
       <Search indices={searchIndices} />
-    </HeaderDiv>
+    </HeaderContainer>
   )
 }

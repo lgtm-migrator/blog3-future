@@ -1,36 +1,28 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { useOnClickOutside } from 'hooks'
-import React, { useRef, useState, useEffect } from 'react'
-import { NavDiv, NavLink, NavToggle } from './styles'
-import { globalHistory } from '@reach/router'
+import React from 'react'
+import { useScreenQuery } from 'hooks'
+import DesktopNav from './Desktop'
+import MobileNav from './Mobile'
+
+export { NavLink } from './styles'
 
 export default function Nav(props) {
   const { nav } = useStaticQuery(graphql`
     {
-      nav: allNavYaml {
-        nodes {
+      nav: file(base: { eq: "nav.yml" }) {
+        nav: childrenNavYaml {
           title
           url
         }
       }
     }
   `)
-  const ref = useRef()
-  const [open, setOpen] = useState(false)
-  useOnClickOutside(ref, () => open && setOpen(false))
-  // close mobile nav on route changes, would remain open because part of wrapPageElement
-  useEffect(() => globalHistory.listen(() => setOpen(false)), [])
-  return (
-    <>
-      <NavToggle opener open={open} onClick={() => setOpen(true)} />
-      <NavDiv ref={ref} open={open} onScroll={e => e.preventDefault()} {...props}>
-        <NavToggle open={open} onClick={() => setOpen(false)} />
-        {nav.nodes.map(({ title, url }) => (
-          <NavLink key={url} to={url}>
-            {title}
-          </NavLink>
-        ))}
-      </NavDiv>
-    </>
-  )
+  // Returns true or false on client, undefined in SSR.
+  const mobile = useScreenQuery(`maxPhablet`)
+  if (mobile) return <MobileNav {...nav} {...props} />
+  // Only render DesktopNav if screen query is false.
+  if (mobile === false) return <DesktopNav {...nav} {...props} />
+  // Render nothing in SSR to avoid showing DesktopNav on mobile
+  // on initial page load from cleared cache.
+  return null
 }
